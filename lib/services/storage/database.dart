@@ -25,4 +25,11 @@ class DatabaseService {
     final isar = await db;
     isar.writeTxnSync<int>(() => isar.items.putSync(items));
   }
+
+  Future<List<Items>> getData() async {
+    final isar = await db;
+    final recipe = await isar.items.where().findAll();
+    print(recipe);
+    return recipe;
+  }
 }

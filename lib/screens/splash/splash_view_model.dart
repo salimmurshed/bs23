@@ -11,6 +11,6 @@ class SplashScreenViewModel extends BaseViewModel {
   final NavigationService _nav = locator<NavigationService>();
   goToRepository() async {
     await Future.delayed(const Duration(seconds: 3));
-    _nav.pushNamed(Routes.repository);
+    _nav.pushReplacementNamed(Routes.repository);
   }
 }

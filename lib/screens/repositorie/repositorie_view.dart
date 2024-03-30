@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 
+import '../../managers/font_manager.dart';
 import 'repositorie_view_model.dart';
 
 class RepositoriesView extends StatelessWidget {
@@ -11,7 +12,42 @@ class RepositoriesView extends StatelessWidget {
         viewModelBuilder: () => RepositoriesViewModel(),
         builder: (context, model, child) {
           return Scaffold(
-            body: Container(),
+            appBar: AppBar(
+              title: Text("Flutter"),
+            ),
+            body: SingleChildScrollView(
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: model.items
+                      .map((e) => Card(
+                            child: SizedBox(
+                              width: MediaQuery.of(context).size.width,
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          e.name!,
+                                          style: TextManager.headTextStyle,
+                                        ),
+                                        Text(e.fullName!),
+                                      ],
+                                    )
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ))
+                      .toList(),
+                ),
+              ),
+            ),
           );
         });
   }

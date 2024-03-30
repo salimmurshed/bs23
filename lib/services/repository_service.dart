@@ -7,6 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stacked/stacked.dart';
 
 import '../app/locator.dart';
+import '../config/connectivity.dart';
 import '../data_models/repository_model.dart';
 
 @lazySingleton
@@ -15,14 +16,18 @@ class RepositoryService with ListenableServiceMixin {
   final DatabaseService _databaseService = locator<DatabaseService>();
   List<Items> items = [];
   Future callData() async {
-    Response res = await _webService
-        .getRequest('https://api.github.com/search/repositories?q=flutter');
-    RepositoryModel data = RepositoryModel.fromJson(jsonDecode(res.body));
-    items = data.items!;
-    print(data);
-    data.items!.forEach((element) async {
-      await _databaseService.saveData(element);
-      print(element);
-    });
+    bool connection = await checkConnectivity();
+    if (connection) {
+      var res = await _databaseService.getData();
+      items = res;
+    } else {
+      Response res = await _webService
+          .getRequest('https://api.github.com/search/repositories?q=flutter');
+      RepositoryModel data = RepositoryModel.fromJson(jsonDecode(res.body));
+      items = data.items!;
+      data.items!.forEach((element) async {
+        await _databaseService.saveData(element);
+      });
+    }
   }
 }

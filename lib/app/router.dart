@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bs23/screens/my_home_page.dart';
 
+import '../screens/repositorie/repositorie_view.dart';
+import '../screens/splash/splash_view.dart';
+
 abstract class Routes {
   static const startupView = '/';
-  static const login = 'login';
+  static const splash = 'splash';
+  static const repository = 'repository';
 
   static const all = {
     startupView,
-    login,
+    splash,
+    repository,
   };
 }
 
@@ -16,12 +21,17 @@ class Router {
     switch (settings.name) {
       case Routes.startupView:
         return MaterialPageRoute<dynamic>(
-          builder: (context) => const MyHomePage(),
+          builder: (context) => SplashScreenView(),
           settings: settings,
         );
-      case Routes.login:
+      case Routes.splash:
         return MaterialPageRoute<dynamic>(
-          builder: (context) => const MyHomePage(),
+          builder: (context) => SplashScreenView(),
+          settings: settings,
+        );
+      case Routes.repository:
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => RepositoriesView(),
           settings: settings,
         );
 

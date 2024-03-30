@@ -41,3 +41,4 @@ app.*.map.json
 /ios/Pods/
 /ios/Podfile
 /macos/Podfile
+/ios/Podfile.lock

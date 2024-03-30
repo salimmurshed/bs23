@@ -45,4 +45,10 @@ class TextManager {
     fontSize: AppFontSize.s104,
     color: ColorManager.blueColor,
   );
+  static const TextStyle errorTextStyle = TextStyle(
+    fontFamily: AppFont.mainTextFontFamily,
+    fontWeight: AppFontWeighs.regular,
+    fontSize: AppFontSize.s12,
+    color: ColorManager.redColor,
+  );
 }

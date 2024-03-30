@@ -9,7 +9,6 @@ var scaffoldKey = locator<NavigationService>().scaffoldKey;
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  setupLocator();
+  configureDependencies();
   runApp(const MyApp());
 }

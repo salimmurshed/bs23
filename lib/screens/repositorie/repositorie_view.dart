@@ -95,31 +95,26 @@ class RepositoriesView extends StatelessWidget {
                                                                           .owner!
                                                                           .avatarUrl!)),
                                                             ),
-                                                            Padding(
-                                                              padding:
-                                                                  const EdgeInsets
-                                                                      .symmetric(
-                                                                      horizontal:
-                                                                          8.0),
-                                                              child: Column(
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  Text(
-                                                                    e.id!
-                                                                        .toString(),
-                                                                    style: TextManager
-                                                                        .headTextStyle,
-                                                                  ),
-                                                                  Text(
-                                                                    e.name!,
-                                                                    style: TextManager
-                                                                        .headTextStyle,
-                                                                  ),
-                                                                  Text(e
-                                                                      .fullName!),
-                                                                ],
+                                                            Expanded(
+                                                              child: Padding(
+                                                                padding: const EdgeInsets
+                                                                    .symmetric(
+                                                                    horizontal:
+                                                                        8.0),
+                                                                child: Column(
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    Text(
+                                                                      e.name!,
+                                                                      style: TextManager
+                                                                          .headTextStyle,
+                                                                    ),
+                                                                    Text(e
+                                                                        .fullName!),
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ),
                                                           ],

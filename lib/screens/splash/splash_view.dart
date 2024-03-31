@@ -30,13 +30,13 @@ class SplashScreenView extends StatelessWidget {
                             .copyWith(color: ColorManager.ashColor),
                       ),
                     ),
-                    Text(
+                    const Text(
                       "BS23",
                       style: TextManager.splashTitle,
                     ),
                   ],
                 ),
-                WaveLoader(
+                const WaveLoader(
                   type: SpinKitWaveType.start,
                   size: 50,
                   color: ColorManager.blueColor,

@@ -24,6 +24,7 @@ dependencies:
   path:
   path_provider:
   http:
+  url_launcher: ^6.2.4
 
 
 

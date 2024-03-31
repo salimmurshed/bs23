@@ -63,4 +63,10 @@ class TextManager {
     fontSize: AppFontSize.s14,
     color: ColorManager.blackColor,
   );
+  static const TextStyle tagStyle = TextStyle(
+    fontFamily: AppFont.mainTextFontFamily,
+    fontWeight: AppFontWeighs.bold,
+    fontSize: AppFontSize.s12,
+    color: ColorManager.whiteColor,
+  );
 }

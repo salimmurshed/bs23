@@ -7,7 +7,7 @@ import 'config/my_app.dart';
 var navKey = locator<NavigationService>().navigatorKey;
 var scaffoldKey = locator<NavigationService>().scaffoldKey;
 
-void main() {
+void mainDelegate() {
   WidgetsFlutterBinding.ensureInitialized();
   configureDependencies();
   runApp(const MyApp());

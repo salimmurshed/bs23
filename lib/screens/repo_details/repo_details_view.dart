@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bs23/data_models/repository_model.dart';
+import 'package:flutter_bs23/managers/color_manager.dart';
 import 'package:intl/intl.dart';
 import 'package:stacked/stacked.dart';
 
@@ -44,31 +45,31 @@ class RepoDetailsView extends StatelessWidget {
                             children: [
                               Row(
                                 children: [
-                                  Icon(Icons.remove_red_eye_outlined),
+                                  const Icon(Icons.remove_red_eye_outlined),
                                   Text(
                                     model.item!.watchersCount!.toString(),
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
                                   )
                                 ],
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.fork_right),
+                                  const Icon(Icons.fork_right),
                                   Text(
                                     model.item!.forksCount!.toString(),
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
                                   )
                                 ],
                               ),
                               Row(
                                 children: [
-                                  Icon(Icons.star_border),
+                                  const Icon(Icons.star_border),
                                   Text(
                                     model.item!.stargazersCount!.toString(),
-                                    style:
-                                        TextStyle(fontWeight: FontWeight.bold),
+                                    style: const TextStyle(
+                                        fontWeight: FontWeight.bold),
                                   )
                                 ],
                               ),
@@ -113,6 +114,88 @@ class RepoDetailsView extends StatelessWidget {
                                   "License: ${model.item!.license!.key!}",
                                   textAlign: TextAlign.left,
                                   style: TextManager.bodyTextStyle,
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 16.0),
+                                  child: Text(
+                                    "URLS",
+                                    style: TextManager.headTextStyle,
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 5,
+                                  child: SizedBox(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: SingleChildScrollView(
+                                      scrollDirection: Axis.horizontal,
+                                      child: Row(
+                                        children: [
+                                          TextButton(
+                                            onPressed: () {
+                                              model.launchUrlData(
+                                                  model.item!.htmlUrl!);
+                                            },
+                                            child: const Text("Github"),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              model.launchUrlData(
+                                                  model.item!.cloneUrl!);
+                                            },
+                                            child: const Text("Clone Url"),
+                                          ),
+                                          TextButton(
+                                            onPressed: () {
+                                              model.launchUrlData(
+                                                  model.item!.svnUrl!);
+                                            },
+                                            child: const Text("Svn Url"),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                const Padding(
+                                  padding: EdgeInsets.only(top: 16.0),
+                                  child: Text(
+                                    "TOPICS",
+                                    style: TextManager.headTextStyle,
+                                  ),
+                                ),
+                                Card(
+                                  elevation: 5,
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(8.0),
+                                    child: SizedBox(
+                                      width: MediaQuery.of(context).size.width,
+                                      child: Wrap(
+                                        children: model.item!.topics!
+                                            .map((p) => Container(
+                                                  margin:
+                                                      const EdgeInsets.all(4.0),
+                                                  decoration: BoxDecoration(
+                                                      color: ColorManager
+                                                          .appBarColor,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5)),
+                                                  child: Padding(
+                                                    padding: const EdgeInsets
+                                                        .symmetric(
+                                                        horizontal: 8.0,
+                                                        vertical: 4.0),
+                                                    child: Text(
+                                                      p,
+                                                      style:
+                                                          TextManager.tagStyle,
+                                                    ),
+                                                  ),
+                                                ))
+                                            .toList(),
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ],
                             ),

@@ -29,11 +29,12 @@ class RepositoriesViewModel extends ReactiveViewModel {
   callData() async {
     setBusy(true);
     notifyListeners();
-    await _repository.callData();
     items.clear();
     l = 0;
+    await _repository.callData();
     items = _repository.items.sublist(l, l + 10);
     l += 10;
+
     setBusy(false);
     notifyListeners();
   }

@@ -17,7 +17,7 @@ class RepositoryService with ListenableServiceMixin {
   List<Items> items = [];
   Future callData() async {
     bool connection = await checkConnectivity();
-    if (connection) {
+    if (!connection) {
       var res = await _databaseService.getData();
       items = res;
     } else {
